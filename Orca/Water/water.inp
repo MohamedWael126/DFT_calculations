@@ -1,0 +1,20 @@
+# avogadro generated ORCA input file 
+# Advanced Mode
+# 
+! B3LYP OPT FREQ def2-SVP def2/J NormalPrint Grid4  TightSCF PAL4
+%scf
+	MaxIter 125
+	CNVDIIS 1
+	CNVSOSCF 1 
+end
+%output
+	print[p_mos] true
+	print[p_basis] 5
+end
+
+* xyz 0 1
+   O       -3.38652        2.72713        0.01494
+   H       -2.39719        2.69267       -0.01055
+   H       -3.67588        1.96573       -0.54821
+*
+

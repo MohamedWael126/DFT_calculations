@@ -1,0 +1,9 @@
+# avogadro generated ORCA input file 
+# Basic Mode
+# Energy of N
+! BP RI SP 6-311+G(d)
+
+* xyz 0 4
+   N       -3.67749        0.78688        0.00000
+*
+

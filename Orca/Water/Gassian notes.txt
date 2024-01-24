@@ -1,0 +1,74 @@
+Gaussian notes:
+----------------
+*GaussView can open sdf file directly.
+*The input file is saved as gjf(gaussian job file).
+The output file is log file.
+
+Ionization Energy:
+*******************
+
+Ionization Energy of an atom (c-atom) = Energy of c+ - Energy of c0
+Job type: Energy, Method: Ground State	DFT	Default spin B3LYP
+Basis Set: 6-311G ++ d p
+Carbon has two unpaired electron, so the multiplicity is 2+1 -> spin: triplet.
+Results-> Summary -> Total Energy: --.
+For ionized carbon: Charge: 1, Spin (multiplicity): one unpaired electron +1: Doublet.
+
+UV_Vis:
+*******
+OPtimiize the strucrure first for any process and open the log file for the next process.
+Job type: OPtimization (Minimum), Method: Ground State	DFT	Default spin B3LYP
+Basis Set: 6-311G ++ d p
+Copy the structure: Edit-> Copy, paste in new window: Edit-> paste-> Add to molecule Group.
+Job type: Energy, Method: TD-SCF	DFT	Default spin B3LYP  Basis Set: 6-311G ++ d p
+open the log file. right click-> Results -> UV_Vis.
+
+HOMO_LUMO - Electrostatic Potential Map (ESP):
+**********************************************
+Electron Densities + Electrostatic potential -> ESP.
+Red color: more negative charge (more basic)-> more electrophiphilic attack is possible.
+
+Job type: OPtimization (Minimum), Method: Ground State	DFT	Default spin B3LYP
+Basis Set: 6-311G ++ d p
+Open the log file. Click MO Editor icon.
+Method: Load Existing Chk file -> load (button).
+Visualize tab -> Add type -> HOMO_LUMO -> update. the red box detects homo or lumo.
+
+To view Potential electrostatic surface: open the chk file: Results -> Surface and Contours
+ Cube Actions -> New Cube, Type: Total Density -> ok. Surface Actions-> New Mapped Surface-> 
+ Type: ESP, Density Matrix: SCF -> Ok. 
+R. click-> View-> Display Format-> Surface tab -> Format: Transparent	
+
+
+IR-Raman Spectrum:
+******************
+Use optimized geometry or Opt+Freq.
+Job type: Frequency, Compute Raman: True, Method: Ground State	DFT	Default spin B3LYP
+Basis Set: 6-311G ++ d p
+Open the the log file. R. click -> Results-> Vibrations.
+Press spectra to get the spectrum.
+
+
+If there is a negative frequency (imaginary frequency), this is from a transition state.
+ Thus, optimize the output file (use it as input file for the second optimiation).
+ Ooen log file-> R. click-> File-> Save-> .gjb file.
+ Job type: Opt+Freq, Compute Raman: True, Method: Ground State	DFT	Default spin B3LYP
+
+
+To get numbers of Negative frequency:
+R. click on the view window of log file-> Results-> Summary-> Imaginary Frequency:--.
+R. click-> Results-> Vibrations.
+
+Transition state:
+*****************
+Job type: Opt+Freq-> Optimize to: TS(Berney)-> Force Constants: Calculate at all Points
+Method: Ground State	DFT	Unrestricted B3LYP, Basis Set: 6-311G ++ d p
+Charge: 0, Spin: Doublet.
+Open log file-> Results-> Summary -> Imaginary Frequency: 1.
+Shown in Results-> Vibrations.
+in the view: R. click-> Edit-> Copy.
+File -> New Molecule-> paste.
+Job type: IRC, Follow IRC: Both directions. Force constants: Calculate always.
+check Compute more points: 40.
+Charge: 0, Spin: Doublet.
+Open the log file. In the view: R. click -> Results-> IRC/Path. 

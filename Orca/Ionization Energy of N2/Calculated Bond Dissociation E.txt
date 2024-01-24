@@ -1,0 +1,8 @@
+N2: -2981.36550
+N : -1485.61189
+
+Bond dissociation Energy = 2E(N) - E(N2)
+			 = 2(-1485.61189) - (-2981.36550)
+			 = 10.141 eV
+
+Experimental dissociation Energy  = 9.9 eV
